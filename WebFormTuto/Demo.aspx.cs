@@ -10,10 +10,12 @@ namespace WebFormTuto
 {
     public partial class Demo : System.Web.UI.Page
     {
+
+        SqlConnection cnn;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             string connetionString;
-            SqlConnection cnn;
 
             connetionString = @"Server=localhost\SQLEXPRESS;Trusted_Connection=True;Database=mydbtuto ;User ID=demo_user;Password=Password123";
             //connetionString = @"Server=tcp:myservertuto.database.windows.net,1433;Initial Catalog=mydbtuto;Persist Security Info=False;User ID=myadmin;Password=Admin123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
@@ -22,9 +24,21 @@ namespace WebFormTuto
 
             cnn.Open();
 
-            Response.Write("Connection Réussie");
+            //Response.Write("Connection Réussie");
             //cnn.Close();
 
+
+            
+            cnn.Close();
+
+        }
+
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            //Session["Name"] = txtName.Text;
+
+            cnn.Open();
 
             SqlCommand command;
             SqlDataReader dataReader;
@@ -42,20 +56,8 @@ namespace WebFormTuto
             Response.Write(Output);
             dataReader.Close();
             command.Dispose();
+
             cnn.Close();
-
-        }
-
-
-        protected void btnSubmit_Click(object sender, EventArgs e)
-        {
-            Session["Name"] = txtName.Text;
-
-            Response.Write(Session["Name"]);
-
-            Response.Write(txtName.Text + "</br>");
-
-            Response.Write(lstLocation.SelectedItem.Text + "</br>");
 
             lblName.Visible = false;
             txtName.Visible = false;
