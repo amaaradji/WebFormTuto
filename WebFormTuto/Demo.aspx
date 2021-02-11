@@ -11,17 +11,28 @@
     <form id="form1" runat="server">
         <div>
             
-            <div>
-                <asp:Label ID="lblName" runat="server" Text="Welcome"></asp:Label>
-            </div>
-            <div>
-                <asp:CheckBox ID="CheckBox1" runat="server" />
-            </div>
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-            <div>
-                <asp:Button ID="Button1" runat="server" OnClick="onClickOk" Text="Ok" />
-            </div>
+            <asp:Label ID="lblName" runat="server" Text="Name"></asp:Label>
+            <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+            <br />
+            <asp:ListBox ID="lstLocation" runat="server">
+                <asp:ListItem>Paris</asp:ListItem>
+                <asp:ListItem>Marseille</asp:ListItem>
+                <asp:ListItem>Lyon</asp:ListItem>
+                <asp:ListItem>Lille</asp:ListItem>
+            </asp:ListBox>
+            <br />
+            <asp:RadioButton ID="rdFemale" runat="server" Text="Female" GroupName="rdGroup" />
+            <br />
+            <asp:RadioButton ID="rdMale" runat="server" Text="Male" GroupName="rdGroup" />
+            <br />
             
+            <asp:CheckBox ID="chkC" runat="server" Text="C#" />
+            <br />
+            <asp:CheckBox ID="chkASP" runat="server" Text="ASP.Net" />
+            
+            <br />
+            <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" />
+            <br />
         </div>
     </form>
 </body>
