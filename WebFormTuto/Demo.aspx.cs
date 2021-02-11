@@ -16,28 +16,33 @@ namespace WebFormTuto
             SqlConnection cnn;
 
             connetionString = @"Server=localhost\SQLEXPRESS;Trusted_Connection=True;Database=mydbtuto ;User ID=demo_user;Password=Password123";
+            //connetionString = @"Server=tcp:myservertuto.database.windows.net,1433;Initial Catalog=mydbtuto;Persist Security Info=False;User ID=myadmin;Password=Admin123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
             cnn = new SqlConnection(connetionString);
 
             cnn.Open();
 
-            Response.Write("Connection Made");
+            Response.Write("Connection Réussie");
+            //cnn.Close();
+
+
+            SqlCommand command;
+            SqlDataReader dataReader;
+            String sql, Output = " ";
+            sql = "Select TutorialID,TutorialName from demotb";
+
+            command = new SqlCommand(sql, cnn);
+
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                Output = Output + dataReader.GetValue(0) + "-" + dataReader.GetValue(1) + "</br>";
+            }
+
+            Response.Write(Output);
+            dataReader.Close();
+            command.Dispose();
             cnn.Close();
-
-            /*
-                        SqlCommand command;
-                        SqlDataAdapter adapter = new SqlDataAdapter();
-                        String sql = "";
-
-                        sql = "Insert into demo_tb(TutorialID,TutorialName) value(3, \"VB.Net\")";
-
-
-                        command = new SqlCommand(sql, cnn);
-                        adapter.InsertCommand = new SqlCommand(sql, cnn);
-                        adapter.InsertCommand.ExecuteNonQuery();
-
-                        command.Dispose(); 
-                        cnn.Close();*/
 
         }
 
