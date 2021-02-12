@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace WebFormTuto
@@ -66,7 +62,101 @@ namespace WebFormTuto
             chkASP.Visible = false;
             rdMale.Visible = false;
             rdFemale.Visible = false;
-            btnSubmit.Visible = false;
+            btnSubmit.Visible = true;
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            cnn.Open();
+
+            SqlCommand command;
+            SqlDataAdapter adapter = new SqlDataAdapter(); 
+            String sql= "Insert into demotb(TutorialID,TutorialName) values (3, 'VB.Net ')";
+
+            command = new SqlCommand(sql, cnn);
+
+            adapter.InsertCommand = command;
+            adapter.InsertCommand.ExecuteNonQuery();
+
+            command.Dispose();
+
+            cnn.Close();
+
+            lblName.Visible = false;
+            txtName.Visible = false;
+            lstLocation.Visible = false;
+            chkC.Visible = false;
+            chkASP.Visible = false;
+            rdMale.Visible = false;
+            rdFemale.Visible = false;
+            btnSubmit.Visible = false;
+
+            btnSubmit_Click(sender, e);
+
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            cnn.Open();
+
+            SqlCommand command;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            String sql = "Update demotb set TutorialName = '" + "VB.Net Complete" + "' where TutorialID = 3";
+
+            command = new SqlCommand(sql, cnn);
+
+            adapter.InsertCommand = command;
+            adapter.InsertCommand.ExecuteNonQuery();
+
+            command.Dispose();
+
+            cnn.Close();
+
+            lblName.Visible = false;
+            txtName.Visible = false;
+            lstLocation.Visible = false;
+            chkC.Visible = false;
+            chkASP.Visible = false;
+            rdMale.Visible = false;
+            rdFemale.Visible = false;
+            btnSubmit.Visible = false;
+            
+            btnSubmit_Click(sender, e);
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            cnn.Open();
+
+            SqlCommand command;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            String sql = "Delete demotb where TutorialID=3";
+
+            command = new SqlCommand(sql, cnn);
+
+            adapter.InsertCommand = command;
+            adapter.InsertCommand.ExecuteNonQuery();
+
+            command.Dispose();
+
+            cnn.Close();
+
+            lblName.Visible = false;
+            txtName.Visible = false;
+            lstLocation.Visible = false;
+            chkC.Visible = false;
+            chkASP.Visible = false;
+            rdMale.Visible = false;
+            rdFemale.Visible = false;
+            btnSubmit.Visible = false;
+
+            btnSubmit_Click(sender, e);
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            SqlDataSource1.Update();
+        }
+
     }
 }
