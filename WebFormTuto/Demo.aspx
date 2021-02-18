@@ -11,51 +11,39 @@
     <form id="form1" runat="server">
         <div>
             
+            <asp:Label ID="Label3" runat="server" Text="Id"></asp:Label>
+            <asp:TextBox ID="txtId" runat="server"></asp:TextBox>
+            <br />
+            
             <asp:Label ID="lblName" runat="server" Text="Name"></asp:Label>
             <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
             <br />
-            <asp:ListBox ID="lstLocation" runat="server" Height="112px" Width="102px">
-                <asp:ListItem>Paris</asp:ListItem>
-                <asp:ListItem>Marseille</asp:ListItem>
-                <asp:ListItem>Lyon</asp:ListItem>
-                <asp:ListItem>Lille</asp:ListItem>
-                <asp:ListItem>Bordeaux</asp:ListItem>
-            </asp:ListBox>
-            <br />
-            <asp:RadioButton ID="rdFemale" runat="server" Text="Female" GroupName="rdGroup" />
-            <br />
-            <asp:RadioButton ID="rdMale" runat="server" Text="Male" GroupName="rdGroup" />
-            <br />
-            
-            <asp:CheckBox ID="chkC" runat="server" Text="C#" />
-            <br />
-            <asp:CheckBox ID="chkASP" runat="server" Text="ASP.Net" />
             
             <br />
             <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Display" />
             <br />
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Insert" />
             <br />
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Update" />
+            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Update" style="height: 26px" />
             <br />
             <asp:Button ID="Button3" runat="server" Text="Delete" OnClick="Button3_Click" />
             <br />
             <br />
             <br />
+            
+            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:mydbtutoConnectionString2 %>" SelectCommand="SELECT * FROM [demotb]" 
+                UpdateCommand="UPDATE [dbo].[demotb]   SET [TutorialID] = @TutorialID,[TutorialName] = @TutorialName WHERE [TutorialID]  = @TutorialID;"></asp:SqlDataSource>
+            
+            <asp:ListBox ID="ListTuto" runat="server" DataSourceID="SqlDataSource3" DataTextField="TutorialName" DataValueField="TutorialID"></asp:ListBox>
+            
             <br />
-            <asp:Label ID="Label1" runat="server" Text="TutorialID"></asp:Label>
-            <asp:ListBox ID="ListBox1" runat="server" DataSourceID="SqlDataSource1" DataTextField="TutorialID" DataValueField="TutorialID"></asp:ListBox>
+            <br />
+            <br />
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                 ConnectionString="Server=localhost\SQLEXPRESS;Trusted_Connection=True;Database=mydbtuto ;User ID=demo_user;Password=Password123" 
                 SelectCommand="SELECT * FROM [demotb]" 
                 UpdateCommand="UPDATE demotb SET TutorialID =@TutorialID ,TutorialName = @TutorialName where TutorialID =@TutorialID">
             </asp:SqlDataSource>
-            <br />
-            <br />
-            <asp:Label ID="Label2" runat="server" Text="TutorialName"></asp:Label>
-            <asp:ListBox ID="ListBox2" runat="server" DataSourceID="SqlDataSource1" DataTextField="TutorialName" DataValueField="TutorialName"></asp:ListBox>
-            <br />
-            <br />
             <br />
             <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="TutorialID" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />
