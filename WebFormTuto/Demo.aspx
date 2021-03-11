@@ -45,7 +45,16 @@
             
             <br />
             <br />
+            
+            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:mydbtutoConnectionString2 %>" SelectCommand="SELECT * FROM [demotb]" 
+                UpdateCommand="UPDATE [dbo].[demotb]   SET [TutorialID] = @TutorialID,[TutorialName] = @TutorialName WHERE [TutorialID]  = @TutorialID;"></asp:SqlDataSource>
+            
+            <asp:ListBox ID="ListTuto" runat="server" DataSourceID="SqlDataSource3" DataTextField="TutorialName" DataValueField="TutorialID"></asp:ListBox>
+            
             <br />
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="TutorialID"></asp:Label>
+            <asp:ListBox ID="ListBox1" runat="server" DataSourceID="SqlDataSource1" DataTextField="TutorialID" DataValueField="TutorialID"></asp:ListBox>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                 ConnectionString="Server=localhost\SQLEXPRESS;Trusted_Connection=True;Database=mydbtuto ;User ID=demo_user;Password=Password123" 
                 SelectCommand="SELECT * FROM [demotb]" 

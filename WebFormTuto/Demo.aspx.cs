@@ -142,7 +142,7 @@ namespace WebFormTuto
 
         protected void moveToAnotherPage(object sender, EventArgs e)
         {
-            Response.Redirect("WebForm2.aspx", false);
+            SqlDataSource1.Update();
         }
 
     }
