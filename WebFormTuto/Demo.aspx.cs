@@ -78,23 +78,23 @@ namespace WebFormTuto
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            cnn.Open();
+            //cnn.Open();
 
-            SqlCommand command;
-            SqlDataAdapter adapter = new SqlDataAdapter(); 
-            String sql= "Insert into demotb(TutorialID,TutorialName) values (" + txtId.Text + ",  "+ "'" + txtName.Text + "'" + ")";
+            //SqlCommand command;
+            //SqlDataAdapter adapter = new SqlDataAdapter(); 
+            //String sql= "Insert into demotb(TutorialID,TutorialName) values (" + txtId.Text + ",  "+ "'" + txtName.Text + "'" + ")";
 
-            command = new SqlCommand(sql, cnn);
+            //command = new SqlCommand(sql, cnn);
 
-            adapter.InsertCommand = command;
-            adapter.InsertCommand.ExecuteNonQuery();
+            //adapter.InsertCommand = command;
+            //adapter.InsertCommand.ExecuteNonQuery();
 
-            command.Dispose();
+            //command.Dispose();
 
-            cnn.Close();
+            //cnn.Close();
 
 
-            btnSubmit_Click(sender, e);
+            //btnSubmit_Click(sender, e);
 
         }
 
