@@ -2,9 +2,6 @@
 using System.Text;
 using System.Security.Cryptography;
 
-
-
-
 namespace WebFormTuto
 {
     public static class Hasher
